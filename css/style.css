@@ -1,0 +1,28 @@
+body {
+    background: linear-gradient(to bottom, #009688 20%, #d9dbd5 80%);
+
+}
+.bg-grey {
+    background-color: #d9dbd5;
+}
+#headerLeft img {
+    width: 70px;
+    border-radius: 25px;
+}
+#left .fa-solid {
+    font-size: 20px;
+}
+.fa-bell-slash {
+    font-size: 40px;
+    border-radius: 20px;
+    color: white;
+}
+.bg-Bell {
+    background-color: #8edafc;
+}
+.cWhite {
+    color: white;
+}
+.Bold {
+    font-weight: 600;
+}
