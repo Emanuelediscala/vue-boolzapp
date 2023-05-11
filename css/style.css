@@ -14,8 +14,10 @@ body {
 }
 .fa-bell-slash {
     font-size: 40px;
-    border-radius: 20px;
-    color: white;
+    border-radius: 50%;
+    color:#8edafc;
+    background-color: white;
+    padding:10px;
 }
 .bg-Bell {
     background-color: #8edafc;
@@ -26,3 +28,6 @@ body {
 .Bold {
     font-weight: 600;
 }
+#ConversationLeft img {
+    width: 70px;
+} 

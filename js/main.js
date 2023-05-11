@@ -169,4 +169,4 @@ createApp({
 
         }
     }
-})
+}).mount("#app")

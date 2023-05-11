@@ -33,13 +33,17 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 ">
-                <form class="d-flex align-items-center bg-white p-1">
-                    <input class="form-control " type="search" placeholder="&#128269; Search " aria-label="Search">
-                </form>                  
+            <div class="col-12 bg-white p-1 ">
+                <input class="form-control" type="search" placeholder="&#128269; Search " aria-label="Search">                  
             </div>
-            <div id="ConversationLeft" class="d-flex col-12">
-                <div></div>
+            <div id="ConversationLeft" class="col-12">
+                <div v-for="(contact,i) in contacts" class="d-flex col-12 bg-white">
+                    <img :src="contact.avatar">
+                    <div class="m-3">
+                        <p class="m-0">{{contact.name}}</p>
+                        <span>{{contact.messages[contact.messages.length - 1].message}}</span>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="right" class="col-8"></div>
