@@ -13,14 +13,15 @@
 
 <body class="backGround vh-100">
     <div id="app" class="container h-100 my-2 d-flex">
-        <div id="left " class="d-flex col-4 flex-wrap">
+        <div id="left " class="d-flex col-4 flex-wrap h-100">
             <div id="headerLeft" class="d-flex bg-grey col-4">
                 <div class="d-flex align-items-center gap-2 p-2">
                     <img src="./img/avatar_io.jpg" alt="">
                     <p class="m-0">Sofia</p>
                 </div>
             </div>
-            <div id="headerRight" class="col-8 borderRight d-flex p-2 align-items-center bg-grey justify-content-end gap-3">
+            <div id="headerRight"
+                class="col-8 borderRight d-flex p-2 align-items-center bg-grey justify-content-end gap-3">
                 <i class="fa-solid fa-circle-notch"></i>
                 <i class="fa-solid fa-message"></i>
                 <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -37,8 +38,9 @@
             <div class="col-12 bg-white p-1 ">
                 <input class="form-control" type="search" placeholder="&#128269; Search " aria-label="Search">
             </div>
-            <div id="ConversationLeft" class="col-12 overflowY h78">
-                <div v-for="(contact,i) in contacts" class="d-flex borderBottom col-12 bg-white justify-content-between  px-2">
+            <div id="ConversationLeft" class="col-12 overflowY h-75">
+                <div @click="conversationChance(i)" v-for="(contact,i) in contacts"
+                    class="d-flex borderBottom col-12 bg-white justify-content-between  px-2">
                     <div class="d-flex">
                         <img :src="contact.avatar">
                         <div class="m-3 w-50">
@@ -47,19 +49,19 @@
                         </div>
                     </div>
                     <div class="d-flex col-3 align-items-center">
-                        {{contact.messages[contact.messages.length-2].date}}
+                        {{contact.messages[contact.messages.length-1].date}}
                     </div>
                 </div>
             </div>
         </div>
-        <div id="right" class="col-8">
-            <div id="chatDetails" class="d-flex ">
+        <div id="right" class="col-8 h-100">
+            <div id="chatDetails" class="d-flex">
                 <div class="d-flex bg-grey col-4">
                     <div class="d-flex align-items-center gap-2 p-2">
-                        <img src="./img/avatar_1.jpg" alt="">
+                        <img :src="currentContact.avatar" alt="">
                         <div>
-                            <p class="m-0">Michele</p>
-                            <span class="form-text">Ultimo Accesso alle 12:00</span>
+                            <p class="m-0">{{currentContact.name}}</p>
+                            <span class="form-text">ultimo accesso ore 12:00</span>
                         </div>
                     </div>
                 </div>
@@ -69,27 +71,18 @@
                     <i class="fa-solid fa-ellipsis-vertical me-2"></i>
                 </div>
             </div>
-            <div id="chatBody" class="h85 p-4  overflowY">
-                <div id="sent" class="bg-Green text-end borderRadius p-2 maxWidth floatRight ">VORREI ANDARE AL MARE MA MI SCOCCIO VORREI FARE TUTTO CIO CHE VORREI NELLA MIA VITA VORREI ANDARE AL MARE MA MI SCOCCIO VORREI FARE TUTTO CIO CHE VORREI NELLA MIA VITA</div>
-                <div id="received" class="bg-white borderRadius my-4 maxWidth floatLeft p-2">VORREI ANDARE AL MARE MA MI SCOCCIO VORREI FARE TUTTO CIO CHE VORREI NELLA MIA VITA</div>
-                <div id="sent" class="bg-Green text-end borderRadius p-2 maxWidth floatRight ">VORREI ANDARE AL MARE MA MI SCOCCIO VORREI FARE TUTTO CIO CHE VORREI NELLA MIA VITA VORREI ANDARE AL MARE MA MI SCOCCIO VORREI FARE TUTTO CIO CHE VORREI NELLA MIA VITA</div>
-                <div id="received" class="bg-white borderRadius my-4 maxWidth floatLeft p-2">VORREI ANDARE AL MARE MA MI SCOCCIO VORREI FARE TUTTO CIO CHE VORREI NELLA MIA VITA</div>
-                <div id="sent" class="bg-Green text-end borderRadius p-2 maxWidth floatRight ">VORREI ANDARE AL MARE MA MI SCOCCIO VORREI FARE TUTTO CIO CHE VORREI NELLA MIA VITA VORREI ANDARE AL MARE MA MI SCOCCIO VORREI FARE TUTTO CIO CHE VORREI NELLA MIA VITA</div>
-                <div id="received" class="bg-white borderRadius my-4 maxWidth floatLeft p-2">VORREI ANDARE AL MARE MA MI SCOCCIO VORREI FARE TUTTO CIO CHE VORREI NELLA MIA VITA</div>
-                <div id="sent" class="bg-Green text-end borderRadius p-2 maxWidth floatRight ">VORREI ANDARE AL MARE MA MI SCOCCIO VORREI FARE TUTTO CIO CHE VORREI NELLA MIA VITA VORREI ANDARE AL MARE MA MI SCOCCIO VORREI FARE TUTTO CIO CHE VORREI NELLA MIA VITA</div>
-                <div id="sent" class="bg-Green text-end borderRadius p-2 maxWidth floatRight ">VORREI ANDARE AL MARE MA MI SCOCCIO VORREI FARE TUTTO CIO CHE VORREI NELLA MIA VITA VORREI ANDARE AL MARE MA MI SCOCCIO VORREI FARE TUTTO CIO CHE VORREI NELLA MIA VITA</div>
-                <div id="sent" class="bg-Green text-end borderRadius p-2 maxWidth floatRight ">VORREI ANDARE AL MARE MA MI SCOCCIO VORREI FARE TUTTO CIO CHE VORREI NELLA MIA VITA VORREI ANDARE AL MARE MA MI SCOCCIO VORREI FARE TUTTO CIO CHE VORREI NELLA MIA VITA</div>
-
-
-
-                <div id="received" class="bg-white borderRadius my-4 maxWidth floatLeft p-2">VORREI ANDARE AL MARE MA MI SCOCCIO VORREI FARE TUTTO CIO CHE VORREI NELLA MIA VITA</div>
+            <div id="chatBody" class="h85  p-4  overflowY">
+                <div v-for="(message,i) in currentContact.messages" id="sent"
+                    :class="[message.status === 'sent' ? 'floatRight bg-Green' : 'floatLeft bg-dirtyWhite']"
+                    class="text-end borderRadius p-2 maxWidth">{{message.message}}</div>
             </div>
-            <div id ="chatTools" class="h5 bg-dirtyWhite d-flex align-items-center justify-content-center">
+            <div id="chatTools" class="h5 bg-dirtyWhite d-flex align-items-center justify-content-center">
                 <div class="col-1 d-flex align-content-center justify-content-center">
                     <i class="fa-regular fa-face-smile"></i>
                 </div>
                 <div class="col-10">
-                    <input type="text" class="form-control" placeholder="scrivi un messaggio" aria-label="Recipient's username">
+                    <input @keyup.enter="sendMessage" v-model="sentMessage" type="text" class="form-control"
+                        placeholder="scrivi un messaggio" aria-label="Recipient's username">
                 </div>
                 <div class="col-1 d-flex align-content-center justify-content-center">
                     <i class="fa-solid fa-microphone"></i>
