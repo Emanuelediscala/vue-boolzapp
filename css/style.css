@@ -5,10 +5,7 @@ body {
 .bg-grey {
     background-color: #d9dbd5;
 }
-#headerLeft img {
-    width: 70px;
-    border-radius: 25px;
-}
+
 #left .fa-solid {
     font-size: 20px;
 }
@@ -28,6 +25,39 @@ body {
 .Bold {
     font-weight: 600;
 }
-#ConversationLeft img {
+img {
     width: 70px;
+    border-radius: 25px;
+    object-fit: contain;
+}
+.borderRight {
+    border-right: 1px solid gray;
+}
+.borderBottom {
+    border-bottom: 1px solid lightgray;
+}
+#chatDetails .fa-solid {
+    font-size: 20px;
+}
+#chatBody {
+    background-image: url("/img/mine.jpg");
+    background-size: cover;
+}
+.h85 {
+    height: 87.1%;
+}
+.h5 {
+    height: 5%;
+}
+.bg-dirtyWhite {
+    background-color: #f3eeea;
+}
+.bg-Green {
+    background-color: #d5f9ba;
+}
+.borderRadius {
+    border-radius: 25px;
+}
+.maxWidth {
+    max-width: 95%;
 } 
