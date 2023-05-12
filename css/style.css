@@ -1,7 +1,13 @@
-body {
-    background: linear-gradient(to bottom, #009688 20%, #d9dbd5 80%);
-
-}
+.backGround {
+        height: 100vh;
+        width: 100%;
+        padding: 24px;
+        background: rgb(0,150,136);
+        background: -moz-linear-gradient(180deg, rgba(0,150,136,1) 12%, rgba(218,219,212,1) 12%);
+        background: -webkit-linear-gradient(180deg, rgba(0,150,136,1) 12%, rgba(218,219,212,1) 12%);
+        background: linear-gradient(180deg, rgba(0,150,136,1) 12%, rgba(218,219,212,1) 12%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#009688",endColorstr="#dadbd4",GradientType=1);
+    }
 .bg-grey {
     background-color: #d9dbd5;
 }
@@ -26,7 +32,7 @@ body {
     font-weight: 600;
 }
 img {
-    width: 70px;
+    width: 50px;
     border-radius: 25px;
     object-fit: contain;
 }
@@ -47,7 +53,10 @@ img {
     height: 87.1%;
 }
 .h5 {
-    height: 5%;
+    height: 5.7%;
+}
+.h78 {
+    height: 78%;
 }
 .bg-dirtyWhite {
     background-color: #f3eeea;
@@ -59,5 +68,17 @@ img {
     border-radius: 25px;
 }
 .maxWidth {
-    max-width: 95%;
-} 
+    max-width: 80%;
+}
+.floatLeft {
+    float: left;
+}
+.floatRight {
+    float:right
+}
+#chatBody div {
+    word-break:normal;
+}
+.overflowY {
+    overflow-y: auto;
+}
