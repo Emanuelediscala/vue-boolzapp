@@ -4,7 +4,6 @@ createApp({
     data() {
         return {
             searchContact: "",
-
             sentMessage: "",
             currentUser: {
                 name: "Emanuele",
@@ -172,28 +171,6 @@ createApp({
                         }
                     ],
                 },
-                {
-                    name: 'Michele',
-                    avatar: './img/avatar_1.jpg',
-                    visible: true,
-                    messages: [
-                        {
-                            date: '10/01/2020 15:30:55',
-                            message: 'Hai portato a spasso il cane?',
-                            status: 'sent'
-                        },
-                        {
-                            date: '10/01/2020 15:50:00',
-                            message: 'Ricordati di stendere i panni',
-                            status: 'sent'
-                        },
-                        {
-                            date: '10/01/2020 16:15:22',
-                            message: 'Tutto fatto!',
-                            status: 'received'
-                        }
-                    ],
-                },
             ]
         }
     },
@@ -213,11 +190,12 @@ createApp({
             for (let i = 0; i < this.contacts.length; i++) {
                 const element = this.contacts[i];
                 if (!element.name.includes(this.searchContact)) {
-                    this.visible = false;
+                    this.contacts.visible = false;
                 }
-                if (this.searchContact === "") {
-                    this.visible = true;
+                else if (this.searchContact === "") {
+                    this.contacts.visible = true;
                 }
+                console.log(this.visible);
             }
         }
     },
