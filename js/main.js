@@ -200,10 +200,10 @@ createApp({
             this.currentContact = this.contacts[i]
         },
         sendMessage() {
-            this.currentContact.messages.push({ message: this.sentMessage, status: "sent", date: new Date().toLocaleString() })   
-            const name = this.currentContact.name
+            this.currentContact.messages.push({ message: this.sentMessage, status: "sent", date: new Date().toLocaleString()})   
+            const appCurrentContact = this.currentContact
             setTimeout(() => {
-                this.currentContact.messages.push({ message: "Ok", status: "received", date: new Date().toLocaleString() })
+                appCurrentContact.messages.push({ message: "Ok", status: "received", date: new Date().toLocaleString() })
             }, 3 * 1000);
             this.sentMessage = ""
         }
