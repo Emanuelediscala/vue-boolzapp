@@ -190,10 +190,10 @@ createApp({
             for (let i = 0; i < this.contacts.length; i++) {
                 const element = this.contacts[i];
                 if (!element.name.includes(this.searchContact)) {
-                    this.contacts.visible = false;
+                    element.visible = false;
                 }
                 else if (this.searchContact === "") {
-                    this.contacts.visible = true;
+                    element.visible = true;
                 }
                 console.log(this.visible);
             }
