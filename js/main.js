@@ -189,7 +189,7 @@ createApp({
         searching() {
             for (let i = 0; i < this.contacts.length; i++) {
                 const element = this.contacts[i];
-                if (!element.name.includes(this.searchContact)) {
+                if (!element.name.toLowerCase().includes(this.searchContact.toLowerCase())) {
                     element.visible = false;
                 }
                 else if (this.searchContact === "") {

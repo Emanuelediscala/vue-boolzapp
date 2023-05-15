@@ -13,7 +13,7 @@
 
 <body class="backGround vh-100">
     <!-- APP CONTAINER -->
-    <div id="app" class="container h-100 my-2 d-flex">
+    <div id="app" class="container h-75 mt-5 d-flex">
         <!-- LEFT PART -->
         <div id="left " class="d-flex col-4 flex-wrap h-100">
             <!-- HEADER LEFT -->
@@ -45,7 +45,7 @@
                 <input @input="searching"  v-model="searchContact" class="form-control" type="search" placeholder="&#128269; Search " aria-label="Search">
             </div>
             <!-- CONVERSATION LIST -->
-            <div id="ConversationLeft" class="col-12 overflowY h-75">
+            <div id="ConversationLeft" class="col-12 overflowY bg-white h-75">
                 <div @click="conversationChance(i)" v-for="(contact,i) in contacts" :class="contact.visible === false ? 'D-None' : null"
                     class="d-flex borderBottom col-12 bg-white justify-content-between  px-2">
                     <div class="d-flex">
@@ -81,7 +81,7 @@
                 </div>
             </div>
             <!-- CHAT BODY -->
-            <div id="chatBody" class="h85 d-flex flex-column  p-4  overflowY">
+            <div id="chatBody" class="h90 d-flex flex-column  p-4  overflowY">
                 <div v-for="(message,i) in currentContact.messages" id="sent"
                     :class="[message.status === 'sent' ? 'text-end align-self-end bg-Green' : 'align-self-start bg-dirtyWhite']"
                     class="borderRadius p-2 maxWidth">
@@ -89,7 +89,7 @@
                 </div>
             </div>
             <!-- FOOTER CHAT -->
-            <div id="chatTools" class="h5 bg-dirtyWhite d-flex align-items-center justify-content-center">
+            <div id="chatTools" class=" p-1  bg-dirtyWhite d-flex align-items-center justify-content-center">
                 <div class="col-1 d-flex align-content-center justify-content-center">
                     <i class="fa-regular fa-face-smile"></i>
                 </div>
