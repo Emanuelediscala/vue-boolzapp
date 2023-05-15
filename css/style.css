@@ -67,9 +67,6 @@ img {
 .borderRadius {
     border-radius: 25px;
 }
-.maxWidth {
-    
-}
 .floatLeft {
     float: left;
 }
@@ -84,4 +81,7 @@ img {
 }
 #conversationLeft div:hover {
     cursor: pointer;
+}
+.D-None {
+    display: none;
 }

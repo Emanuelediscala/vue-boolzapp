@@ -42,11 +42,11 @@
             </div>
             <!-- SEARCHBAR -->
             <div class="col-12 bg-white p-1">
-                <input class="form-control" type="search" placeholder="&#128269; Search " aria-label="Search">
+                <input @input="searching"  v-model="searchContact" class="form-control" type="search" placeholder="&#128269; Search " aria-label="Search">
             </div>
             <!-- CONVERSATION LIST -->
             <div id="ConversationLeft" class="col-12 overflowY h-75">
-                <div @click="conversationChance(i)" v-for="(contact,i) in contacts"
+                <div @click="conversationChance(i)" v-for="(contact,i) in contacts" :class="contact.visible === false ? 'D-None' : null"
                     class="d-flex borderBottom col-12 bg-white justify-content-between  px-2">
                     <div class="d-flex">
                         <img :src="contact.avatar">

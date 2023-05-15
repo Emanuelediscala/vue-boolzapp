@@ -3,6 +3,8 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            searchContact: "",
+
             sentMessage: "",
             currentUser: {
                 name: "Emanuele",
@@ -200,16 +202,27 @@ createApp({
             this.currentContact = this.contacts[i]
         },
         sendMessage() {
-            this.currentContact.messages.push({ message: this.sentMessage, status: "sent", date: new Date().toLocaleString()})   
+            this.currentContact.messages.push({ message: this.sentMessage, status: "sent", date: new Date().toLocaleString() })
             const appCurrentContact = this.currentContact
             setTimeout(() => {
                 appCurrentContact.messages.push({ message: "Ok", status: "received", date: new Date().toLocaleString() })
             }, 3 * 1000);
             this.sentMessage = ""
+        },
+        searching() {
+            for (let i = 0; i < this.contacts.length; i++) {
+                const element = this.contacts[i];
+                if (!element.name.includes(this.searchContact)) {
+                    this.visible = false;
+                }
+                if (this.searchContact === "") {
+                    this.visible = true;
+                }
+            }
         }
     },
     mounted() {
-        console.log(`the component is now mounted.`)
+    console.log(`the component is now mounted.`)
         this.currentContact = this.contacts[0]
-    }
+}
 }).mount("#app")
