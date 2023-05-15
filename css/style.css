@@ -85,3 +85,15 @@ img {
 .D-None {
     display: none;
 }
+.dropdown-show .dropdown-menu {
+    display: block;
+  }
+.appHeight {
+    height: 400px;
+}
+#chatbody {
+    height: 492px;
+}
+.formattingTime {
+    font-size: 10px;
+}

@@ -3,6 +3,7 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
+            
             searchContact: "",
             sentMessage: "",
             currentUser: {
@@ -175,17 +176,20 @@ createApp({
         }
     },
     methods: {
+        // DEFINISCO FUNZIONE INTERATTIVA PER CAMBIO PANNELLO
         conversationChance(i) {
             this.currentContact = this.contacts[i]
         },
+        // FUNZIONE PER INVIO MESSAGGI
         sendMessage() {
             this.currentContact.messages.push({ message: this.sentMessage, status: "sent", date: new Date().toLocaleString() })
             const appCurrentContact = this.currentContact
             setTimeout(() => {
-                appCurrentContact.messages.push({ message: "Ok", status: "received", date: new Date().toLocaleString() })
+                appCurrentContact.messages.push({ message: "Ok", status: "received", date: new Date().toLocaleString(),showDropDown:"false"})
             }, 3 * 1000);
             this.sentMessage = ""
         },
+        // FUNZIONE PER CONTROLLO SEARCHBAR
         searching() {
             for (let i = 0; i < this.contacts.length; i++) {
                 const element = this.contacts[i];
@@ -197,8 +201,18 @@ createApp({
                 }
                 console.log(this.visible);
             }
+        },
+        // PROVA MS 5
+        dropdown(message) {
+            message.showDropDown=true;
+            console.log(message.showDropDown,message);
+        },
+        // FORMATTAZIONE TEMPO
+        formattingTime(data) {
+            return data.split(" ")[1].substring(0,5)
         }
     },
+    // DEFINISCO AL CARICAMENTO DELLA PAGINA UN DEFAULT TEMPLATE
     mounted() {
     console.log(`the component is now mounted.`)
         this.currentContact = this.contacts[0]

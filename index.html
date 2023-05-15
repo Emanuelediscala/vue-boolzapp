@@ -11,11 +11,11 @@
     <title>What's app</title>
 </head>
 
-<body class="backGround vh-100">
+<body class="backGround ">
     <!-- APP CONTAINER -->
-    <div id="app" class="container h-75 mt-5 d-flex">
+    <div id="app" class="container appHeight mt-5 d-flex">
         <!-- LEFT PART -->
-        <div id="left " class="d-flex col-4 flex-wrap h-100">
+        <div id="left " class="d-flex h-100 col-4 flex-wrap ">
             <!-- HEADER LEFT -->
             <div id="headerLeft" class="d-flex bg-grey col-4">
                 <div class="d-flex align-items-center gap-2 p-2">
@@ -42,11 +42,13 @@
             </div>
             <!-- SEARCHBAR -->
             <div class="col-12 bg-white p-1">
-                <input @input="searching"  v-model="searchContact" class="form-control" type="search" placeholder="&#128269; Search " aria-label="Search">
+                <input @input="searching" v-model="searchContact" class="form-control" type="search"
+                    placeholder="&#128269; Search " aria-label="Search">
             </div>
             <!-- CONVERSATION LIST -->
-            <div id="ConversationLeft" class="col-12 overflowY bg-white h-75">
-                <div @click="conversationChance(i)" v-for="(contact,i) in contacts" :class="contact.visible === false ? 'D-None' : null"
+            <div id="ConversationLeft" class="col-12 overflowY bg-white h-100">
+                <div @click="conversationChance(i)" v-for="(contact,i) in contacts"
+                    :class="contact.visible === false ? 'D-None' : null"
                     class="d-flex borderBottom col-12 bg-white justify-content-between  px-2">
                     <div class="d-flex">
                         <img :src="contact.avatar">
@@ -81,15 +83,25 @@
                 </div>
             </div>
             <!-- CHAT BODY -->
-            <div id="chatBody" class="h90 d-flex flex-column  p-4  overflowY">
-                <div v-for="(message,i) in currentContact.messages" id="sent"
+            <div id="chatBody" class="d-flex flex-column  p-2  overflowY">
+                <div v-on:contextmenu.prevent @click.right="dropdown(message)"
+                    v-for="(message,i) in currentContact.messages" id="sent"
                     :class="[message.status === 'sent' ? 'text-end align-self-end bg-Green' : 'align-self-start bg-dirtyWhite']"
-                    class="borderRadius p-2 maxWidth">
+                    class="borderRadius my-1 p-2 maxWidth dropdown dropdown-trigger">
                     {{message.message}}
+                    <div class="form-text">
+                        {{formattingTime(message.date)}}
+                    </div>
+                    <!-- PROVA MS5 -->
+                    <div class="dropdown-menu" v-show="message.showDropDown">
+                        <a class="dropdown-item" href="#">Opzione 1</a>
+                        <a class="dropdown-item" href="#">Opzione 2</a>
+                        <a class="dropdown-item" href="#">Opzione 3</a>
+                    </div>
                 </div>
             </div>
             <!-- FOOTER CHAT -->
-            <div id="chatTools" class=" p-1  bg-dirtyWhite d-flex align-items-center justify-content-center">
+            <div id="chatTools" class="p-1  bg-dirtyWhite d-flex align-items-center justify-content-center">
                 <div class="col-1 d-flex align-content-center justify-content-center">
                     <i class="fa-regular fa-face-smile"></i>
                 </div>
@@ -106,5 +118,4 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="./js/main.js"></script>
 </body>
-
 </html>
