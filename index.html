@@ -84,19 +84,21 @@
             </div>
             <!-- CHAT BODY -->
             <div id="chatBody" class="d-flex flex-column  p-2  overflowY">
-                <div v-on:contextmenu.prevent @click.right="dropdown(message)"
-                    v-for="(message,i) in currentContact.messages" id="sent"
+                <div v-on:contextmenu.prevent v-for="(message,i) in currentContact.messages" id="sent"
                     :class="[message.status === 'sent' ? 'text-end align-self-end bg-Green' : 'align-self-start bg-dirtyWhite']"
-                    class="borderRadius my-1 p-2 maxWidth dropdown dropdown-trigger">
+                    class="borderRadius my-1 p-2 maxWidth relative">
                     {{message.message}}
                     <div class="form-text">
-                        {{formattingTime(message.date)}}
+                    {{formattingTime(message.date)}}
                     </div>
-                    <!-- PROVA MS5 -->
-                    <div class="dropdown-menu" v-show="message.showDropDown">
-                        <a class="dropdown-item" href="#">Opzione 1</a>
-                        <a class="dropdown-item" href="#">Opzione 2</a>
-                        <a class="dropdown-item" href="#">Opzione 3</a>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false" @click="toggleDropdown(i)">
+                        </button>
+                        <ul class="dropdown-menu" v-show="(showDropDown === true)"  :class="[message.status === 'sent' ? 'dropdownCustomRight' : null],[message.status === 'received' ? 'dropdownCustomLeft' :  null]">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -118,4 +120,5 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="./js/main.js"></script>
 </body>
+
 </html>

@@ -3,12 +3,13 @@ const { createApp } = Vue;
 createApp({
     data() {
         return {
-            
             searchContact: "",
             sentMessage: "",
+            showDropDown:"false",
             currentUser: {
                 name: "Emanuele",
             },
+            currentMessage:[],
             currentContact: {},
             contacts: [
                 {
@@ -187,7 +188,7 @@ createApp({
             setTimeout(() => {
                 appCurrentContact.messages.push({ message: "Ok", status: "received", date: new Date().toLocaleString(),showDropDown:"false"})
             }, 3 * 1000);
-            this.sentMessage = ""
+            this.sentMessage = "";
         },
         // FUNZIONE PER CONTROLLO SEARCHBAR
         searching() {
@@ -203,9 +204,9 @@ createApp({
             }
         },
         // PROVA MS 5
-        dropdown(message) {
-            message.showDropDown=true;
-            console.log(message.showDropDown,message);
+        toggleDropdown(i) {
+        this.showDropDown = !this.showDropDown;
+        console.log(this.showDropDown);   
         },
         // FORMATTAZIONE TEMPO
         formattingTime(data) {

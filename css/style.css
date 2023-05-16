@@ -97,3 +97,16 @@ img {
 .formattingTime {
     font-size: 10px;
 }
+.dropdownCustomRight {
+    display: inline-block;
+    right: 21px;
+    top: 15px;
+}.dropdownCustomLeft {
+    display: inline-block;
+    left: 20px;
+    top: 15px;
+}
+
+.relative {
+    position: relative;
+}
