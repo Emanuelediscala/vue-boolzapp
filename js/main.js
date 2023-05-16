@@ -5,12 +5,11 @@ createApp({
         return {
             searchContact: "",
             sentMessage: "",
-            showDropDown:"false",
             currentUser: {
                 name: "Emanuele",
             },
-            currentMessage:[],
-            currentContact: {},
+            currentMessage:0,
+            currentContact:{},
             contacts: [
                 {
                     name: 'Michele',
@@ -20,17 +19,20 @@ createApp({
                         {
                             date: '10/01/2020 15:30:55',
                             message: 'Hai portato a spasso il cane?',
-                            status: 'sent'
+                            status: 'sent',
+                            showDropDown:false,
                         },
                         {
                             date: '10/01/2020 15:50:00',
                             message: 'Ricordati di stendere i panni',
-                            status: 'sent'
+                            status: 'sent',
+                            showDropDown:false,
                         },
                         {
                             date: '10/01/2020 16:15:22',
                             message: 'Tutto fatto!',
-                            status: 'received'
+                            status: 'received',
+                            showDropDown: false,
                         }
                     ],
                 },
@@ -179,7 +181,8 @@ createApp({
     methods: {
         // DEFINISCO FUNZIONE INTERATTIVA PER CAMBIO PANNELLO
         conversationChance(i) {
-            this.currentContact = this.contacts[i]
+            this.currentContact = this.contacts[i];
+            this.currentMessage = i;
         },
         // FUNZIONE PER INVIO MESSAGGI
         sendMessage() {
@@ -205,12 +208,15 @@ createApp({
         },
         // PROVA MS 5
         toggleDropdown(i) {
-        this.showDropDown = !this.showDropDown;
-        console.log(this.showDropDown);   
+        this.contacts[this.currentMessage].messages[i].showDropDown = !this.contacts[this.currentMessage].messages[i].showDropDown;
+        
         },
         // FORMATTAZIONE TEMPO
         formattingTime(data) {
             return data.split(" ")[1].substring(0,5)
+        },
+        deleteMsg(i) {
+            this.contacts[this.currentMessage].messages.splice(i,1)
         }
     },
     // DEFINISCO AL CARICAMENTO DELLA PAGINA UN DEFAULT TEMPLATE
